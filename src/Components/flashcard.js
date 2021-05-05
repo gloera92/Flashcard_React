@@ -9,6 +9,6 @@ const Flashcard = (props) => {
             <p className="card-text">Word Defintion</p>
             </div>
         </div>
-    )}
+    )};
 
-export default Flashcard;
+    export default Flashcard;

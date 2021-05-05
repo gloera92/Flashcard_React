@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {Component} from 'react';
-import Flashcard from './Flashcard/flashcard';
-
+import AddFlashcard from './addFlashcard';
+import Flashcard from './flashcard';
 
 
 class App extends Component {
@@ -24,6 +24,20 @@ class App extends Component {
         console.log("get flashcards")
     }
 
+    mapFlashcards(){
+        return this.state.flashcards.map(flashcard => 
+            <Flashcard
+                key={flashcard.id}
+                flashcard={flashcard}
+            />    
+        );
+    }
+
+    async addFlashcard(flashcard){
+        await axios.post('http://127.0.0.1:8000/flashcard_app/', flashcard)
+        this.getAllFlashcards()
+    }
+
 
 
 
@@ -32,8 +46,8 @@ class App extends Component {
     render(){
         return(
             <div>
-             <Flashcard flashcard={this.getAllFlashcards.bind(this)}/>
-
+            <Flashcard flashcard={this.getAllFlashcards.bind(this)}/>
+            <AddFlashcard addFlashcard={this.addFlashcard.bind(this)} />
 
             </div>
         )
