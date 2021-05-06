@@ -1,5 +1,6 @@
 import React, {Component} from'react';
 
+
 class AddFlashcard extends Component {
     constructor(props) {
         super(props);
@@ -37,7 +38,7 @@ class AddFlashcard extends Component {
     render(){
         return (
             <div>
-                <h1> Add Flashcard</h1>
+                <h2> Add Flashcard </h2>
                 <form onSubmit={this.handleSubmit}>
                     <div className="row col-align">
                         <div className="col-md-4">

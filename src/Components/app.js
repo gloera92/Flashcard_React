@@ -1,8 +1,8 @@
-import axios from 'axios';
 import React, {Component} from 'react';
-import AddFlashcard from './addFlashcard';
+import axios from 'axios';
 import Flashcard from './flashcard';
-
+import AddFlashcard from './addFlashcard';
+import FlashcardCollection from './flashcardCollection';
 
 class App extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class App extends Component {
     }
 
     async getAllFlashcards(){
-        let response = await axios.get('http://127.0.0.1:8000/flashcard_app');
+        let response = await axios.get('http://127.0.0.1:8000/flashcard_app/');
         this.setState({
             flashcards: response.data
         })
@@ -25,6 +25,7 @@ class App extends Component {
     }
 
     mapFlashcards(){
+        console.log("mapflashcards")
         return this.state.flashcards.map(flashcard => 
             <Flashcard
                 key={flashcard.id}
@@ -34,20 +35,18 @@ class App extends Component {
     }
 
     async addFlashcard(flashcard){
-        await axios.post('http://127.0.0.1:8000/flashcard_app/', flashcard)
+        await axios.post('http://127.0.0.1:8000/flashcard_app/', flashcard);
         this.getAllFlashcards()
     }
-
-
-
 
 
 
     render(){
         return(
             <div>
-            <Flashcard flashcard={this.getAllFlashcards.bind(this)}/>
+            <FlashcardCollection flashcards={this.getAllFlashcards.bind(this)} flashcard={() => this.getAllFlashcards()} mapFlashcards={() => this.mapFlashcards()} /> 
             <AddFlashcard addFlashcard={this.addFlashcard.bind(this)} />
+
 
             </div>
         )
