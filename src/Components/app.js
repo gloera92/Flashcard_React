@@ -3,34 +3,55 @@ import axios from 'axios';
 import Flashcard from './flashcard';
 import AddFlashcard from './addFlashcard';
 import FlashcardCollection from './flashcardCollection';
+// import FilterCollections from './filterCollections';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            flashcards: []
+            flashcards: [],
+            collections: []
         }
     }
 
     componentDidMount() {
         console.log("component mounted");
+        this.getAllFlashcards();
     }
 
     async getAllFlashcards(){
         let response = await axios.get('http://127.0.0.1:8000/flashcard_app/');
         this.setState({
-            flashcards: response.data
+            flashcards: response.data,        
         })
         console.log("get flashcards")
     }
 
-    mapFlashcards(){
-        console.log("mapflashcards")
-        return this.state.flashcards.map(flashcard => 
+    async getAllCollections() {
+        let response = await axios.get('http://127.0.0.1:8000/flashcard_app/')
+        this.setState({
+            flashcards: response.collection
+        })
+        console.log("getcollections")
+    }
+
+    // mapFlashcards(){
+    //     console.log("mapflashcards")
+    //     return this.state.flashcards.map(flashcard => 
+    //         <Flashcard
+    //             key={flashcard.id}
+    //             flashcard={flashcard}
+    //         />    
+    //     );
+    // }
+
+    mapCollections() {
+        console.log("mapcollections")
+        return this.state.flashcards.map(flashcard =>
             <Flashcard
                 key={flashcard.id}
                 flashcard={flashcard}
-            />    
+            />
         );
     }
 
@@ -44,8 +65,10 @@ class App extends Component {
     render(){
         return(
             <div>
-            <FlashcardCollection flashcards={this.getAllFlashcards.bind(this)} flashcard={() => this.getAllFlashcards()} mapFlashcards={() => this.mapFlashcards()} /> 
+            <FlashcardCollection  mapCollections={() => this.mapCollections()} /> 
             <AddFlashcard addFlashcard={this.addFlashcard.bind(this)} />
+            <FilterCollections getAllFlashcards={this.getAllFlashcards.bind(this)} />
+
 
 
             </div>

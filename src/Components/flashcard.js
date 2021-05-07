@@ -5,8 +5,14 @@ const Flashcard = (props) => {
     return(
         <tbody>
             <tr>
-                <td>{this.props.flashcard.id}</td>
-                <td>{props.flashcards.title}</td>
+                <td>{props.flashcard.id}</td>
+                <td>{props.flashcard.word}</td>
+                <td>{props.flashcard.definition}</td>
+                <td>{props.flashcard.collection}</td>
+                
+                
+            </tr>
+            <tr>
                 <td>{props.flashcard.collection}</td>
             </tr>
         </tbody>
