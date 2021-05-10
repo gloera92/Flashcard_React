@@ -2,21 +2,19 @@ import React from 'react';
 
 const FlashcardCollection = (props) => {
     return (
-       <thead>
-           <tr>
-               <th></th>
-           </tr>
-           {props.mapCollections()}
-           {props.mapFlashcards()}
-        
+        <table className="table">
 
-       </thead>
-
-        
-          
-            
-      
-            
+            {props.mapCollections()}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Word</th>
+                <th>Definition</th>
+                <th>Collection</th>
+            </tr>
+        </thead>
+       
+        </table>  
       
     )
 }

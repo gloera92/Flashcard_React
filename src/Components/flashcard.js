@@ -10,9 +10,6 @@ const Flashcard = (props) => {
                 <td>{props.flashcard.definition}</td>
                 <td>{props.flashcard.collection}</td>     
             </tr>
-            <tr>
-            
-            </tr>
         </tbody>
     )};
 
