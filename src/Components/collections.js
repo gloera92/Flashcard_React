@@ -1,13 +1,12 @@
 import React from 'react';
 
-const Collections= (props) => {
+const Collections = (props) => {
     console.log("collections")
     return (
         <thead>
             <h1>Collections</h1>
            <h2>{props.collections.collection}</h2> 
-           {props.mapFlashcards}
-         
+           <button onClick={() => props.setStack(props.collections.id)}>setActiveStack</button>
         </thead>   
     )
 }

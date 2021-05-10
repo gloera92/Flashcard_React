@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Flashcard from './flashcard';
-import AddFlashcard from './addFlashcard';
+import AddFlashcard from './addFlashcard/addFlashcard';
 import FlashcardCollection from './flashcardCollection';
 import Collections from './collections';
 
@@ -11,15 +11,31 @@ class App extends Component {
         super(props);
         this.state = {
             flashcards: [],
-            collections: []
+            collections: [],
+            currentStack: []
         }
+        this.setStack = this.setStack.bind(this);
     }
 
     componentDidMount() {
         this.getAllCollections();
         this.getAllFlashcards();
         console.log("component mounted");
-        
+    }
+
+
+    setStack(id){
+        let currentStack = this.state.flashcards.filter(function(flashcard){
+            if(flashcard.collection == id){
+                return true;
+            }
+            else{
+                return false;
+            }
+        })
+        this.setState({
+            currentStack: currentStack
+        })
     }
 
     async getAllFlashcards(){
@@ -38,9 +54,9 @@ class App extends Component {
         console.log("getcollections", this.state.collections)    
     }
 
-    mapFlashcards(){
+    mapFlashcards(id){
         console.log("mapflashcards")
-        return this.state.flashcards.map(flashcard => 
+        return this.state.currentStack.map(flashcard => 
             <Flashcard
                 key={flashcard.collections}
                 flashcard={flashcard}
@@ -55,6 +71,7 @@ class App extends Component {
             key={collections.id}
             collections={collections}
             mapFlashcards={this.mapFlashcards()}
+            setStack = {this.setStack}
         />
         );
     }
