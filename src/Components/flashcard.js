@@ -8,12 +8,10 @@ const Flashcard = (props) => {
                 <td>{props.flashcard.id}</td>
                 <td>{props.flashcard.word}</td>
                 <td>{props.flashcard.definition}</td>
-                <td>{props.flashcard.collection}</td>
-                
-                
+                <td>{props.flashcard.collection}</td>     
             </tr>
             <tr>
-                <td>{props.flashcard.collection}</td>
+            
             </tr>
         </tbody>
     )};

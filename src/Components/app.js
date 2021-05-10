@@ -3,7 +3,8 @@ import axios from 'axios';
 import Flashcard from './flashcard';
 import AddFlashcard from './addFlashcard';
 import FlashcardCollection from './flashcardCollection';
-// import FilterCollections from './filterCollections';
+import Collections from './collections';
+
 
 class App extends Component {
     constructor(props) {
@@ -15,8 +16,10 @@ class App extends Component {
     }
 
     componentDidMount() {
-        console.log("component mounted");
+        this.getAllCollections();
         this.getAllFlashcards();
+        console.log("component mounted");
+        
     }
 
     async getAllFlashcards(){
@@ -28,32 +31,33 @@ class App extends Component {
     }
 
     async getAllCollections() {
-        let response = await axios.get('http://127.0.0.1:8000/flashcard_app/')
+        let response = await axios.get(`http://127.0.0.1:8000/flashcard_app/collection/`)
         this.setState({
-            flashcards: response.collection
+            collections: response.data,
         })
-        console.log("getcollections")
+        console.log("getcollections", this.state.collections)    
     }
 
-    // mapFlashcards(){
-    //     console.log("mapflashcards")
-    //     return this.state.flashcards.map(flashcard => 
-    //         <Flashcard
-    //             key={flashcard.id}
-    //             flashcard={flashcard}
-    //         />    
-    //     );
-    // }
-
-    mapCollections() {
-        console.log("mapcollections")
-        return this.state.flashcards.map(flashcard =>
+    mapFlashcards(){
+        console.log("mapflashcards")
+        return this.state.flashcards.map(flashcard => 
             <Flashcard
-                key={flashcard.id}
+                key={flashcard.collections}
                 flashcard={flashcard}
-            />
+            />    
         );
     }
+
+    mapCollections(){
+        console.log("mapcollections")
+        return this.state.collections.map(collections => 
+            <Collections 
+            key={collections.id}
+            collections={collections}
+        />
+        );
+    }
+
 
     async addFlashcard(flashcard){
         await axios.post('http://127.0.0.1:8000/flashcard_app/', flashcard);
@@ -61,15 +65,12 @@ class App extends Component {
     }
 
 
-
     render(){
         return(
             <div>
-            <FlashcardCollection  mapCollections={() => this.mapCollections()} /> 
+            <FlashcardCollection mapCollections={() => this.mapCollections()} mapFlashcards={() => this.mapFlashcards()} /> 
             <AddFlashcard addFlashcard={this.addFlashcard.bind(this)} />
-            <FilterCollections getAllFlashcards={this.getAllFlashcards.bind(this)} />
-
-
+           
 
             </div>
         )
