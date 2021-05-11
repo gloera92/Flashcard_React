@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Flashcard from '../flashcard';
+import Flashcard from '../Flashcard/flashcard';
 import AddFlashcard from '../AddFlashcard/addFlashcard';
 import FlashcardCollection from '../FlashcardCollection/flashcardCollection';
 import Collections from '../collections';
@@ -16,6 +16,7 @@ class App extends Component {
             currentStack: []
         }
         this.setStack = this.setStack.bind(this);
+        
     }
 
     componentDidMount() {
@@ -39,6 +40,10 @@ class App extends Component {
         })
     }
 
+    
+
+    
+
     async getAllFlashcards(){
         let response = await axios.get('http://127.0.0.1:8000/flashcard_app/');
         this.setState({
@@ -61,6 +66,7 @@ class App extends Component {
             <Flashcard
                 key={flashcard.collections}
                 flashcard={flashcard}
+                setDef={this.setDef}
             />    
         );
     }
@@ -73,6 +79,8 @@ class App extends Component {
             collections={collections}
             // mapFlashcards={this.mapFlashcards()}
             setStack = {this.setStack}
+            
+            
         />
         );
     }
@@ -82,6 +90,7 @@ class App extends Component {
         this.getAllFlashcards()
     }
 
+    
 
     render(){
         return(

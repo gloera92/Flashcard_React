@@ -5,11 +5,10 @@ const Flashcard = (props) => {
     return(
         <tbody>
             <tr>
-                <td>{props.flashcard.id}</td>
-                <td>{props.flashcard.word}</td>
+                
+                <td>{props.flashcard.word} </td>
                 <td>{props.flashcard.definition}</td>
-                <td>{props.flashcard.collection}</td>     
-            </tr>
+            </tr>                  
         </tbody>
     )};
 

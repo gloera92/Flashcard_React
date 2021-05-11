@@ -1,5 +1,5 @@
 import React from 'react';
-import './flashcardCollection';
+import './flashcardCollection'
 
 const FlashcardCollection = (props) => {
     return (
@@ -7,10 +7,8 @@ const FlashcardCollection = (props) => {
             {props.mapCollections()}
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Word</th>
-                    <th>Definition</th>
-                    <th>Collection</th>
+                    
+                    
                 </tr>
             </thead>
                 {props.mapFlashcards()}

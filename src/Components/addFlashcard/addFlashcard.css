@@ -1,5 +1,5 @@
 form {
-    background-color: white;
+    background-color: rgb(238, 248, 241);
     color: black;
     margin-top: 0%
     
@@ -18,14 +18,16 @@ label {
 }
 
 div.col-md-4 {
+    background-color:  rgb(2, 84, 43);
     padding-bottom: 10px;
     font-size: 2rem;
+    height: 30px;
 }
 
 input {
     border-style: solid;
     border-color: black;
     block-size: 18px;
-    
+    height: 25px;
 }
 
