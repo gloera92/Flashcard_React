@@ -1,0 +1,31 @@
+form {
+    background-color: white;
+    color: black;
+    margin-top: 0%
+    
+}
+
+div.h2 {
+    margin-top: 25%;
+    border-bottom: initial;
+    border-style: solid;
+    border-bottom-color: black;
+}
+
+label {
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+
+div.col-md-4 {
+    padding-bottom: 10px;
+    font-size: 2rem;
+}
+
+input {
+    border-style: solid;
+    border-color: black;
+    block-size: 18px;
+    
+}
+

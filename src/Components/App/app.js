@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Flashcard from './flashcard';
-import AddFlashcard from './addFlashcard/addFlashcard';
-import FlashcardCollection from './flashcardCollection';
-import Collections from './collections';
+import Flashcard from '../flashcard';
+import AddFlashcard from '../AddFlashcard/addFlashcard';
+import FlashcardCollection from '../FlashcardCollection/flashcardCollection';
+import Collections from '../collections';
+import './app.css';
 
 
 class App extends Component {
@@ -70,7 +71,7 @@ class App extends Component {
             <Collections 
             key={collections.id}
             collections={collections}
-            mapFlashcards={this.mapFlashcards()}
+            // mapFlashcards={this.mapFlashcards()}
             setStack = {this.setStack}
         />
         );

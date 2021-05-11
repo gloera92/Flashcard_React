@@ -1,4 +1,5 @@
 import React, {Component} from'react';
+import './addFlashcard.css';
 
 
 class AddFlashcard extends Component {
